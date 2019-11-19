@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="https://jelena-vk-itt.github.io/jvk-tudt-notes/cswd-ft/res/images/logo.png" />
+	<link rel="stylesheet" type="text/css"
+		href="https://jelena-vk-itt.github.io/jvk-tudt-notes/common/res/styles/common.css">
+
+	<title>Javascript Events and Handlers Exercises</title>
+	<style>
+		body {
+			background: lightgray;
+		}
+	</style>
+</head>
+
+<body>
+	<header id="tudheader">
+		<img src="https://jelena-vk-itt.github.io/jvk-tudt-notes/common/res/images/tudublin_logo.png"
+			alt="TU Dublin Logo">
+		<div id="tuddepttext">
+			<p>Tallaght Campus</p>
+			<p>Department of Computing</p>
+		</div>
+		<img id="rightlogo" src="https://jelena-vk-itt.github.io/jvk-tudt-notes/cswd-ft/res/images/logo.png"
+			alt="CSWD Logo">
+	</header>
+
+	<nav>
+
+	</nav>
+
+	<div id="content">
+
+		<h1>Javascript Events and Handlers Exercises</h1>
+
+		<p>First revise what you know about events and handlers by reading through the next section, then complete the
+			exercises that follow.</p>
+
+		<h2>Javascript code, events and handlers and their connection</h2>
+		<ul>
+			<div id="nice-day-box" class="box fr ml1"><strong>It is a nice day today :-).</strong></div>
+			<li>When being interpreted in the browser, <span class="textxl"><u><strong>Javascript
+							code</strong></u></span> can manipulate the currently loaded html page or other aspects of
+				the browser environment. We can write Javascript code to change the contents of the box on the right.
+				For example:
+				<pre class="code-listing ">
+# Use the Document Object Model (DOM) API object and method
+# document and getElementById() to access the box, which has
+# id "nice-day-box" (you can check it by looking at the source).
+
+element = document.getElementById("nice-day-box");
+
+# Change the element's content, by setting its property innerHTML,
+# which contains the content in the form of a string.
+
+element.innerHTML = ":-) :-) :-) :-) :-)";</pre>
+				To get the code to do what it does, we need to feed it to the browser's Javascript interpreter for
+				execution. There are three ways to do this:
+				<ul>
+					<li>through the Javascript <strong>console</strong> in the browser</li>
+					<li>by including the code in an HTML page by means of a <strong>script</strong> element and loading
+						that page</li>
+					<li>by making this piece of code the <strong>handler</strong> for an event and then making the event
+						happen</li>
+				</ul>
+				For the moment, to have the code executed most directly, open the console (press key
+				<strong>F12</strong> and click on the <strong>Console</strong> tab), then cut and paste the lines of
+				code into it, pressing <strong>Enter</strong> after each. Skip the lines starting with a '#' symbol -
+				these are comments. What happens? We have used some Javascript code to change an element currently
+				loaded in the browser.
+				<section class="flcont fljust-end">
+
+
+				</section>
+				But we can also use code to do other things, such as write to the console or pop-up an alert window:
+				<pre class="code-listing">
+# Write to the console, then pop up an alert window.
+console.log("A message from Javascript: I'm writing to the console!");
+alert("A message from Javascript: I'm popping up an alert window!");</pre>
+				Again, to see what the code does, copy and paste it line by line into the Javascript console, skipping
+				the lines starting with the '#' symbol.</li>
+			<li>An <span class="textxl"><u><strong>event</strong></u></span> is something that happens in the context of
+				a browser and currently loaded page, for example a mouse click, such as a mouse click on the button:
+				<section class="flcont fljust-start">
+					<button type="button">Click me!</button>
+				</section>
+				or the mouse pointer entering the box:<br />
+				<section class="flcont fljust-start">
+					<div class="box">Bring your mouse pointer over this box.</div>
+				</section>
+				It is important to note here that many events, e.g. clicks, happen within the scope of an element, e.g.
+				a button that was clicked and this element is called the event <strong>target</strong>. An event can
+				have multiple targets e.g. if a button is clicked the body of the page is also clicked.
+			</li>
+
+			<li>It is the developer (you!) that specifies code to be executed when an event happens. Making a connection
+				to this effect between an event and a handler is called <span class="textxl"><u><strong>setting an event
+							handler</strong></u></span>. Event handlers can be set:
+				<ul>
+					<li>programmatically from within Javascript code (we'll be doing this in the next few weeks)</li>
+					<li>using HTML attributes called <strong>event handler properties</strong> (for the moment we will
+						be using this method only):
+						<ol>
+							<li>the <strong>event handler property</strong> is first determined for the chosen event
+								(see <a href="https://developer.mozilla.org/en-US/docs/Web/Events">here</a> for a
+								comprehensive list); event handler property names follow the pattern <span
+									class="fw">"on" + &lt;event name></span>, for example the event handler property for
+								the <span class="fw">click</span> event is <span class="fw">onclick</span></li>
+							<li>the event is listened for on a particular element, called <strong>the target
+									element</strong>, for example if we want the event to be a click on the button
+								<strong>Click to send an alert</strong> then that button is the target element</li>
+							<li>the event handler property is <strong>added as an attribute</strong> to the target
+								element</li>
+							<li>the handler code is <strong>added as the attribute's value</strong></li>
+						</ol>
+						<figure class="fivenh">
+							<figcaption>Adding an event handler in HTML</figcaption>
+							<img src="images/event-handler-inline.png">
+						</figure>
+					</li>
+				</ul>
+
+
+			</li>
+		</ul>
+		<h2>Exercises</h2>
+		<p>This file provides both the instructions and the initial elements for the exercises. Open this file in a text
+			editor to modify it and after each change reload it in the browser to test the results.</p>
+		<p>Each exercise has an id in the form <strong>EX99</strong>. You can use these identifiers to search for the
+			exercises in the text editor.</p>RCISE EX01 ----------------------------------------->
+		<section id="EX01" class="exercise">
+			<p>Exercise: Alerting event handler in HTML [EX01]</p>
+			</p>Add the event handler shown in the picture <em>Adding an event handler in HTML</em> to the button below,
+			then click on the button to check if the click event is being handled as expected.</p>
+			<button type="button" onclick="alert('here\'s the handler code saying hello!');">click to send
+				alert</button>
+			<p>The table shows what the various event handling components are in this case. In the remaining exercises
+				you will be filling in the table values.</p>
+			<table class="ordinary">
+				<tr>
+					<th>Event</th>
+					<td>click</td>
+				</tr>
+				<tr>
+					<th>Event target element (the event happens on this element)</th>
+					<td>button "Click to send alert"</td>
+				</tr>
+				<tr>
+					<th>Event handler behaviour (what the event handler does)</th>
+					<td>pops up an alert window</td>
+				</tr>
+				<tr>
+					<th>Objects acted upon by the event handler</th>
+					<td>the window (alert is a window method)</td>
+				</tr>
+			</table>
+		</section>
+		<!------------------------------------- END EXERCISE EX01 ----------------------------------------->
+
+		<!----------------------------------------- EXERCISE EX02 ----------------------------------------->
+		<section id="EX02" class="exercise">
+			<p>Exercise: Console-logging event handler in HTML [EX02]</p>
+			<p>Part 1: Add an event handler to the button below so that when it is clicked it writes a message to the
+				console. Use the method <span class="fw" onclick="alert('Tallaght!');">console.log()</span>. When
+				finished, test the handler by
+				opening the console and checking that your message appears when the button is clicked.</p>
+			<p>Part 2: Add another button beside the one below. When this new button is clicked, the console should be
+				cleared (use method <span class="fw" onclick="alert('TUDUBLIN!');">console.clear()</span>).</p>
+			<button type="button" onclick="alert('here is my web!');">Click to write to console</button>
+			<p>Fill in the table for the two event handlers added in this exercise.</p>
+			<table class="ordinary">
+				<tr>
+					<th></th>
+					<th>Part 1</th>
+					<th>Part 2</th>
+				</tr>
+				<tr>
+					<th>Event</th>
+					<td>Tallaght</td>
+					<td>TUDUBLIN</td>
+				</tr>
+				<tr>
+					<th>Event target element (the event happens on this element)</th>
+					<td>hello</td>
+					<td>CSWD</td>
+				</tr>
+				<tr>
+					<th>Event handler behaviour (what the event handler does)</th>
+					<td>how</td>
+					<td>NETWORKING</td>
+				</tr>
+				<tr>
+					<th>Objects acted upon by the event handler</th>
+					<td>chair</td>
+					<td>tablet</td>
+				</tr>
+			</table>
+		</section>
+		<!------------------------------------- END EXERCISE EX02 ----------------------------------------->
+
+		<!----------------------------------------- EXERCISE EX03 ----------------------------------------->
+		<section id="EX03" class="exercise">
+			<p>Exercise: Element-modifying event handler in HTML [EX03]</p>
+			<p>Add an event handler to the button below so that when it is clicked it modifies the text in the box on
+				the right.</p>
+			<p>Use the following code for the event handler:
+				<span class="fw">document.getElementById("my_text_box").innerHTML='Something new!';</span>.</p>
+			<p>Add the appropriate id to the text box element so that the event handler accesses it properly.</p>
+
+			<section class="flcont fljust-spev">
+				<button type="button" onclick="document.getElementById('my_text_box').innerHTML='Something new!';">Click
+					to change from old to
+					new</button>
+				<aside id="my_text_box" class="box">Something old...</aside>
+
+			</section>
+			<p>Fill in the table for the event handler added in this exercise.</p>
+			<table class="ordinary">
+				<tr>
+					<th>Event</th>
+					<td>new</td>
+				</tr>
+				<tr>
+					<th>Event target element (the event happens on this element)</th>
+					<td>hello</td>
+				</tr>
+				<tr>
+					<th>Event handler behaviour (what the event handler does)</th>
+					<td>old</td>
+
+				</tr>
+				<tr>
+					<th>Objects acted upon by the event handler</th>
+					<td>25</td>
+				</tr>
+			</table>
+		</section>
+		<!------------------------------------- END EXERCISE EX03 ----------------------------------------->
+
+		<!----------------------------------------- EXERCISE EX04 ----------------------------------------->
+		<script src="ex04.js"></script>
+		<section id="EX04" class="exercise">
+			<p>Exercise: Element-modifying function as event handler in HTML [EX04]</p>
+			<p>Part 1: Repeat exercise 3 but this time use a function to do the work. The function has been placed in
+				file <span class="fw">ex04.js</span> and the file included above but you need to provide the body of the
+				function (hint: it does exactly the same thing as the handler code given for exercise 3). The event
+				handler code will consist of a function call only.</p>
+			<p>Part 2: Add another button element between the button and the box below, then set up a handler that
+				toggles the visibility (makes it hidden if it is visible and vice versa) of the box whenever this new
+				button is clicked. The property that needs to be changed on the element is <span
+					class="fw">hidden</span>. If in doubt about how it works look up reference material and try it out
+				on the console. The handler should be written as a function and placed in file <span
+					class="fw">ex04.js</span>.</p>
+
+			<section class="flcont fljust-spev">
+
+				<button type="button"
+					function="document.getElementById('my_text_box').innerHTML='Something new!';">Click
+					to change from old to new again</button>
+
+				<aside class="box">Something old...again</aside>
+			</section>
+			<p>Fill in the table for the event handlers added in this exercise.</p>
+			<table class="ordinary">
+				<tr>
+					<th></th>
+					<th>Part 1</th>
+					<th>Part 2</th>
+				</tr>
+				<tr>
+					<th>Event</th>
+					<td>school</td>
+					<td>home</td>
+				</tr>
+				<tr>
+					<th>Event target element (the event happens on this element)</th>
+					<td>document</td>
+					<td>book</td>
+				</tr>
+				<tr>
+					<th>Event handler behaviour (what the event handler does)</th>
+					<td>head</td>
+					<td>left</td>
+				</tr>
+				<tr>
+					<th>Objects acted upon by the event handler</th>
+					<td>handlers</td>
+					<td>john</td>
+				</tr>
+			</table>
+		</section>
+		<!------------------------------------- END EXERCISE EX04 ----------------------------------------->
+
+		<!----------------------------------------- EXERCISE EX05 ----------------------------------------->
+
+		<script>
+			<button type="button" onclick="myFunction()">style.color</button>
+			function myFunction() {
+				document.getElementById("myH2").style.color = "#ff0000";
+			}
+		</script>
+		<section id="EX05" class="exercise">
+			<p>Exercise: Same target and object event handler in HTML [EX05]</p>
+
+			<p>Write and set up a handler that will change the colour of the button below when the button is clicked.
+				The property you will be changing on the element is <span class="fw">style.color</span>.</p>
+			<p>The handler should be a function and it should be included in this HTML file in the <span
+					class="fw">script</span> element that appears just above exercise 5.</p>
+
+			<section class="flcont fljust-start">
+				<button type="button"
+					function="document.getElementById('my_text_box').innerHTML='Something new!';">Click
+					to change from old to new again</button>
+
+				<aside class="box">Something old...again</aside>
+
+			</section>
+			<p>Fill in the table for the event handlers added in this exercise.</p>
+			<table class="ordinary">
+				<tr>
+					<th>Event</th>
+					<td>part</td>
+				</tr>
+				<tr>
+					<th>Event target element (the event happens on this element)</th>
+					<td>head</td>
+				</tr>
+				<tr>
+					<th>Event handler behaviour (what the event handler does)</th>
+					<td>ridgt</td>
+				</tr>
+				<tr>
+					<th>Objects acted upon by the event handler</th>
+					<td>round</td>
+				</tr>
+			</table>
+		</section>
+		<!------------------------------------- END EXERCISE EX05 ----------------------------------------->
+	</div>
+
+	<script src="main.js"></script>
+</body>
+
+</html>
